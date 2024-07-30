@@ -13,7 +13,9 @@ let counterSecondInterval;
 counterDisplayMin.textContent = "00";
 counterDisplaySec.textContent = "00";
 
-startButton.addEventListener("click", function () {
+startButton.addEventListener("click", startTimer);
+
+function startTimer() {
   counterSecondInterval = setInterval(function () {
     if (stopWatchSec < 9) {
       counterDisplaySec.textContent = "0" + ++stopWatchSec;
@@ -28,17 +30,21 @@ startButton.addEventListener("click", function () {
         counterDisplayMin.textContent = stopWatchMin++;
       }
     }
-    console.log(stopWatchSec);
   }, 1000);
-});
+}
 
-restartButton.addEventListener("click", function () {
+restartButton.addEventListener("click", restartTimer);
+
+function restartTimer() {
   counterDisplayMin.textContent = "00";
   counterDisplaySec.textContent = "00";
   stopWatchMin = 0;
   stopWatchSec = 0;
   clearInterval(counterSecondInterval);
-});
-stopButton.addEventListener("click", function () {
+}
+
+stopButton.addEventListener("click", stopTimer);
+
+function stopTimer() {
   clearInterval(counterSecondInterval);
-});
+}
