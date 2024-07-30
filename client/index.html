@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
     <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./timer.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -54,6 +55,17 @@
       </table>
     </div>
     <div id="app"></div>
-    <div id="footer"></div>
+    <footer class="footer">
+      <div>
+        <button class="timerDisplay" id="counterDisplayMin"></button>
+        <span class="spanDisplay">:</span>
+        <button class="timerDisplay" id="counterDisplaySec"></button>
+      </div>
+      <div>
+        <button class="buttonDisplay" id="startBtn">Start</button>
+        <button class="buttonDisplay" id="stopBtn">Stop</button>
+        <button class="buttonDisplay" id="restartBtn">Restart</button>
+      </div>
+    </footer>
   </body>
 </html>
