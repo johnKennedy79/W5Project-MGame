@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
     <script type="module" src="./main.js" defer></script>
@@ -16,24 +15,16 @@
       <h1>Matching Pairs</h1>
     </header>
     <div class="sideBar">
-      <table>
-        <th id="lbTitle">Leader Board</th>
-        <tr>
-          <td>User</td>
-          <td>Time</td>
-        </tr>
-        <tr>
-          <td id="lbp1">abc</td>
-          <td id="lbs1">0</td>
-        </tr>
-        <tr>
-          <td id="lbp2">abc</td>
-          <td id="lbs2">0</td>
-        </tr>
-        <tr>
-          <td id="lbp3">abc</td>
-          <td id="lbs3">0</td>
-        </tr>
+      <table id="lbtable">
+        <h4>Leader Board</h4>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Minutes</th>
+            <th>Secounds</th>
+          </tr>
+        </thead>
+        <tbody id="lbp"></tbody>
       </table>
       <table>
         <th id="pbTitle">Your Best Scores</th>
