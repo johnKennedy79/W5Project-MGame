@@ -6,7 +6,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors());
-const db = new pg.Pool({ connectionString: process.env.DBCONECTION });
+const db = new pg.Pool({ connectionString: process.env.DBCONECTIONCARDS });
 app.get("/", (req, res) => {
   res.send("server root route");
 });

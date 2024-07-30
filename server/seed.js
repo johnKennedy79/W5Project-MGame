@@ -14,3 +14,16 @@ CREATE TABLE IF NOT EXISTS cards (
     ('Planets', 'Saturn', 'https://pixabay.com/get/gbaba72e81465ec9e520bb0e5f376a0638fc3868bc1cc5ada1471015793fbc41427c53c68189bcddda20c89f2a56f4264cc96d7ee410c0d36de7dd5ea5eb116a86dcdd5a651b815e6fefec982d1d480e7_640.jpg', 5),
     ('Planets', 'Uranus', 'https://pixabay.com/get/g27dde473659d510f91f56fe97e51bf0b241787dc4effe0aa825487e9507018e265778592d567c1c3a3d483f18d805d24eafe9242fcc9a39c108316e7f29dae0f5e5d15be5dada186870cc26ab166f47d_640.jpg', 6)
     
+
+    CREATE TABLE IF NOT EXISTS leaderboard (
+        id SERIAL PRIMARY KEY,
+        userName VARCHAR(3),
+        timeMin INT,
+        timeSec INT
+      );
+      
+      INSERT INTO leaderboard (userName, timeMin, timeSec) VALUES
+      ('JMS', '0', '30'),
+      ('KS', '1', '00'),
+      ('JW', '1', '05'),
+      ('JMK', '2', '35')
