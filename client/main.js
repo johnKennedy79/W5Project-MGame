@@ -5,10 +5,10 @@ let toggleSideBar = function () {
   let getSideBar = document.querySelector(".sideBar");
 
   if (toggleSideBarStatus === false) {
-    getSideBar.style.visibility = "visible";
+    getSideBar.style.translate = "0%";
     toggleSideBarStatus = true;
   } else if (toggleSideBarStatus === true) {
-    getSideBar.style.visibility = "hidden";
+    getSideBar.style.translate = "-100%";
     toggleSideBarStatus = false;
   }
 };
@@ -28,7 +28,7 @@ async function leaderboardscores() {
     lbrow.appendChild(lbu);
 
     const lbm = document.createElement("td");
-    lbm.textContent = lbdata[i].timemin;
+    lbm.textContent = lbdata[i].timemin + " : ";
     lbrow.appendChild(lbm);
 
     const lbs = document.createElement("td");
