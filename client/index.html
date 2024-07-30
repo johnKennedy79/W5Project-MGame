@@ -4,11 +4,56 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" src="/main.js" defer></script>
+    <title>Memory Game</title>
+    <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./timer.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <header class="header">
+      <button id="scoreBtn" class="button">Score Board</button>
+      <h1>Matching Pairs</h1>
+    </header>
+    <div class="sideBar">
+      <table>
+        <th id="lbTitle">Leader Board</th>
+        <tr>
+          <td>User</td>
+          <td>Time</td>
+        </tr>
+        <tr>
+          <td id="lbp1">abc</td>
+          <td id="lbs1">0</td>
+        </tr>
+        <tr>
+          <td id="lbp2">abc</td>
+          <td id="lbs2">0</td>
+        </tr>
+        <tr>
+          <td id="lbp3">abc</td>
+          <td id="lbs3">0</td>
+        </tr>
+      </table>
+      <table>
+        <th id="pbTitle">Your Best Scores</th>
+        <tr>
+          <td>You</td>
+          <td>Time</td>
+        </tr>
+        <tr>
+          <td>1st</td>
+          <td id="ps1">0</td>
+        </tr>
+        <tr>
+          <td>2nd</td>
+          <td id="ps2">0</td>
+        </tr>
+        <tr>
+          <td>3rd</td>
+          <td id="ps3">0</td>
+        </tr>
+      </table>
+    </div>
     <div id="app"></div>
     <div class="flexboxcards">
       <div class="card">
@@ -60,5 +105,18 @@
         <button class="coverbtn"><img /></button>
       </div>
     </div>
+    <footer class="footer">
+      <div>
+        <button class="timerDisplay" id="counterDisplayMin"></button>
+        <span class="spanDisplay">:</span>
+        <button class="timerDisplay" id="counterDisplaySec"></button>
+      </div>
+      <div>
+        <button class="buttonDisplay" id="startBtn">Start</button>
+        <button class="buttonDisplay" id="stopBtn">Stop</button>
+        <button class="buttonDisplay" id="restartBtn">Restart</button>
+      </div>
+    </footer>
+
   </body>
 </html>
