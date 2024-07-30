@@ -13,3 +13,19 @@ let toggleSideBar = function () {
   }
 };
 scoreBtn.addEventListener("click", toggleSideBar);
+
+const updateBestScores = (newTime) => {
+  const bestScores = [
+    parseInt(document.getElementById("ps1").innerText),
+    parseInt(document.getElementById("ps2").innerText),
+    parseInt(document.getElementById("ps3").innerText),
+  ];
+
+  bestScores.push(newTime);
+  bestScores.sort((a, b) => a - b);
+  bestScores.splice(3);
+
+  document.getElementById("ps1").innerText = bestScores[0];
+  document.getElementById("ps2").innerText = bestScores[1];
+  document.getElementById("ps3").innerText = bestScores[2];
+};
