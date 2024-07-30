@@ -12,7 +12,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/leaderboard", async function (req, res) {
-  const lbresults = await db.query(`SELECT `);
+  const lbresults = await db.query(
+    `SELECT * FROM LEADERBOARD ORDER BY timemin ASC, timesec ASC LIMIT 3`
+  );
+  const lbTopResults = lbresults.rows;
+  res.json(lbTopResults);
 });
 
 app.listen("8080", () => {
