@@ -1,5 +1,3 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Ga+Maamli&family=Paprika&display=swap");
 body {
   margin: 0;
@@ -42,7 +40,7 @@ h1 {
   height: calc(100vh - 7rem);
   background-color: #f1f1f1;
   opacity: 0.5;
-  z-index: 1;
+  z-index: 10;
   visibility: hidden;
 }
 .sideBar table {
@@ -64,7 +62,6 @@ h1 {
   display: flex;
   justify-content: space-evenly;
 }
-
 
 .flexboxcards {
   width: 300px;
@@ -95,6 +92,7 @@ h1 {
   z-index: 1;
   width: 60px;
   height: 90px;
+}
 
 .timerDisplay {
   height: 3rem;
