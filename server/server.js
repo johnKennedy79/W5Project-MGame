@@ -11,6 +11,10 @@ app.get("/", (req, res) => {
   res.send("server root route");
 });
 
+app.get("/leaderboard", async function (req, res) {
+  const lbresults = await db.query(`SELECT `);
+});
+
 app.listen("8080", () => {
   console.log("listening to port 8080");
 });
