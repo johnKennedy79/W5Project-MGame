@@ -1,3 +1,5 @@
+
+
 @import url("https://fonts.googleapis.com/css2?family=Ga+Maamli&family=Paprika&display=swap");
 body {
   margin: 0;
@@ -62,6 +64,37 @@ h1 {
   display: flex;
   justify-content: space-evenly;
 }
+
+
+.flexboxcards {
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-evenly;
+}
+
+.card {
+  display: inherit;
+  width: 60px;
+  height: 90px;
+}
+
+.coverbtn {
+  display: inherit;
+  z-index: 9;
+  width: 60px;
+  height: 90px;
+}
+
+.cardbtn {
+  display: none;
+  z-index: 1;
+  width: 60px;
+  height: 90px;
 
 .timerDisplay {
   height: 3rem;
