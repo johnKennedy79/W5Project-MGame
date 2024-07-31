@@ -22,7 +22,7 @@ async function fetchcards() {
   const cards = await result.json();
   double(cards);
 }
-fetchGames();
+fetchcards();
 
 function shuffle(array) {
   let currentIndex = array.length;
@@ -55,7 +55,6 @@ function resetcards() {
     cardstotal.pop();
   }
 }
-
 
 //add in card flip functions
 
@@ -122,8 +121,6 @@ function displaycards() {
 }
 displaycards();
 
-
-
 function recordTime() {
   times.push(seconds);
   times.sort((a, b) => a - b);
@@ -178,3 +175,344 @@ async function leaderboardscores() {
 }
 leaderboardscores();
 
+let card0 = document.getElementById("flip-card");
+
+let card1 = document.getElementById("flip-card1");
+
+let card2 = document.getElementById("flip-card2");
+
+let card3 = document.getElementById("flip-card3");
+
+let card4 = document.getElementById("flip-card4");
+
+let card5 = document.getElementById("flip-card5");
+
+let card6 = document.getElementById("flip-card6");
+
+let card7 = document.getElementById("flip-card7");
+
+let card8 = document.getElementById("flip-card8");
+
+let card9 = document.getElementById("flip-card9");
+
+let card10 = document.getElementById("flip-card10");
+
+let card11 = document.getElementById("flip-card11");
+
+let cardcheck = null;
+
+let cardpick1 = null;
+
+let cardpick2 = null;
+
+card0.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[0];
+    cardpick1 = card0;
+  } else {
+    cardpick2 = card0;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[0]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[0]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card1.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[1];
+    cardpick1 = card1;
+  } else {
+    cardpick2 = card1;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[1]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[1]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card2.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[2];
+    cardpick1 = card2;
+  } else {
+    cardpick2 = card2;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[2]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[2]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card3.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[3];
+    cardpick1 = card3;
+  } else {
+    cardpick2 = card3;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[3]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[3]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card4.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[4];
+    cardpick1 = card4;
+  } else {
+    cardpick2 = card4;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[4]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[4]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card5.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[5];
+    cardpick1 = card5;
+  } else {
+    cardpick2 = card5;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[5]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[5]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card6.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[6];
+    cardpick1 = card6;
+  } else {
+    cardpick2 = card6;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[6]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[6]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card7.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[7];
+    cardpick1 = card7;
+  } else {
+    cardpick2 = card7;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[7]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[7]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card8.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[8];
+    cardpick1 = card8;
+  } else {
+    cardpick2 = card8;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[8]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[8]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card9.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[9];
+    cardpick1 = card9;
+  } else {
+    cardpick2 = card9;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[9]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[9]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card10.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[10];
+    cardpick1 = card10;
+  } else {
+    cardpick2 = card10;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[10]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[10]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
+
+card11.addEventListener("click", function () {
+  if (cardcheck === null) {
+    cardcheck = cardstotal[11];
+    cardpick1 = card11;
+  } else {
+    cardpick2 = card11;
+    if (cardpick1 === cardpick2) {
+      cardpick1.classList.toggle("flipped");
+      cardpick1 = null;
+      cardpick2.classList.toggle("flipped");
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck === cardstotal[11]) {
+      score++;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    } else if (cardcheck !== cardstotal[11]) {
+      seconds + 5;
+      cardpick1 = null;
+      cardpick2 = null;
+      cardcheck = null;
+    }
+  }
+});
