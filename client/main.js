@@ -68,7 +68,7 @@ document.querySelectorAll(".card").forEach((card) => {
 let timer;
 let seconds = 0;
 let isRunning = false;
-let times = [];
+let bestScores = JSON.parse(localStorage.getItem("bestScores")) || [];
 
 const minutesDisplay = document.getElementById("counterDisplayMin");
 const secondsDisplay = document.getElementById("counterDisplaySec");
@@ -78,6 +78,9 @@ const resetButton = document.getElementById("restartBtn");
 const ps1 = document.getElementById("ps1");
 const ps2 = document.getElementById("ps2");
 const ps3 = document.getElementById("ps3");
+const na1 = document.getElementById("na1");
+const na2 = document.getElementById("na2");
+const na3 = document.getElementById("na3");
 
 function updateTimerDisplay() {
   const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -100,7 +103,8 @@ function stopTimer() {
   if (isRunning) {
     clearInterval(timer);
     isRunning = false;
-    recordTime();
+    promptForName();
+    // recordTime();
   }
 }
 
@@ -110,25 +114,39 @@ function resetTimer() {
   updateTimerDisplay();
 }
 
-function recordTime() {
-  times.push(seconds);
-  times.sort((a, b) => a - b);
-  if (times.length > 3) {
-    times.pop();
+function promptForName() {
+  let name = prompt("Enter your initials (max 3 letters):", "");
+  if (name) {
+    name = name.substring(0, 3).toUpperCase();
+    recordTime(name);
   }
+}
+
+function recordTime(name) {
+  bestScores.push({ name: name, time: seconds });
+  bestScores.sort((a, b) => a.time - b.time);
+  if (bestScores.length > 3) {
+    bestScores.pop();
+  }
+  localStorage.setItem("bestScores", JSON.stringify(bestScores));
   updateScoreboard();
 }
 
 function updateScoreboard() {
-  const formattedTimes = times.map((time) => {
-    const minutes = String(Math.floor(time / 60)).padStart(2, "0");
-    const secs = String(time % 60).padStart(2, "0");
-    return `${minutes}:${secs}`;
+  const entries = bestScores.map((entry) => {
+    const minutes = String(Math.floor(entry.time / 60)).padStart(2, "0");
+    const secs = String(entry.time % 60).padStart(2, "0");
+    return { name: entry.name, time: `${minutes}:${secs}` };
   });
-  ps1.textContent = formattedTimes[0] || "0";
-  ps2.textContent = formattedTimes[1] || "0";
-  ps3.textContent = formattedTimes[2] || "0";
+  [na1, na2, na3].forEach((element, index) => {
+    element.textContent = entries[index] ? entries[index].name : "---";
+  });
+  [ps1, ps2, ps3].forEach((element, index) => {
+    element.textContent = entries[index] ? entries[index].time : "0";
+  });
 }
+
+document.addEventListener("DOMContentLoaded", updateScoreboard);
 
 startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);
