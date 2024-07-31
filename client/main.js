@@ -55,6 +55,7 @@ function resetcards() {
   }
 }
 
+
 async function leaderboardscores() {
   const lbresults = await fetch("http://localhost:8080/leaderboard");
   const lbdata = await lbresults.json();
@@ -78,5 +79,6 @@ async function leaderboardscores() {
     lbp.appendChild(lbrow);
   }
 }
+
 leaderboardscores();
 

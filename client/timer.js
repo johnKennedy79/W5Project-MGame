@@ -1,50 +1,68 @@
-const startButton = document.getElementById("startBtn");
-const stopButton = document.getElementById("stopBtn");
-const restartButton = document.getElementById("restartBtn");
+let timer;
+let seconds = 0;
+let isRunning = false;
+let times = [];
 
-const counterDisplayMin = document.getElementById("counterDisplayMin");
-const counterDisplaySec = document.getElementById("counterDisplaySec");
+const minutesDisplay = document.getElementById('counterDisplayMin');
+const secondsDisplay = document.getElementById('counterDisplaySec');
+const startButton = document.getElementById('startBtn');
+const stopButton = document.getElementById('stopBtn');
+const resetButton = document.getElementById('restartBtn');
+const ps1 = document.getElementById('ps1');
+const ps2 = document.getElementById('ps2');
+const ps3 = document.getElementById('ps3');
 
-let stopWatchSec = 0;
-let stopWatchMin = 1;
-
-let counterMinuteInterval;
-let counterSecondInterval;
-counterDisplayMin.textContent = "00";
-counterDisplaySec.textContent = "00";
-
-startButton.addEventListener("click", startTimer);
+function updateTimerDisplay() {
+    const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    minutesDisplay.textContent = minutes;
+    secondsDisplay.textContent = secs;
+}
 
 function startTimer() {
-  counterSecondInterval = setInterval(function () {
-    if (stopWatchSec < 9) {
-      counterDisplaySec.textContent = "0" + ++stopWatchSec;
-    } else {
-      counterDisplaySec.textContent = ++stopWatchSec;
+    if (!isRunning) {
+        timer = setInterval(() => {
+            seconds++;
+            updateTimerDisplay();
+        }, 1000);
+        isRunning = true;
     }
-    if (stopWatchSec == 60) {
-      stopWatchSec = 0;
-      if (stopWatchMin < 10) {
-        counterDisplayMin.textContent = "0" + stopWatchMin++;
-      } else {
-        counterDisplayMin.textContent = stopWatchMin++;
-      }
-    }
-  }, 1000);
 }
-
-restartButton.addEventListener("click", restartTimer);
-
-function restartTimer() {
-  counterDisplayMin.textContent = "00";
-  counterDisplaySec.textContent = "00";
-  stopWatchMin = 0;
-  stopWatchSec = 0;
-  clearInterval(counterSecondInterval);
-}
-
-stopButton.addEventListener("click", stopTimer);
 
 function stopTimer() {
-  clearInterval(counterSecondInterval);
+    if (isRunning) {
+        clearInterval(timer);
+        isRunning = false;
+        recordTime();
+    }
 }
+
+function resetTimer() {
+    stopTimer();
+    seconds = 0;
+    updateTimerDisplay();
+}
+
+function recordTime() {
+    times.push(seconds);
+    times.sort((a, b) => a - b);
+    if (times.length > 3) {
+        times.pop();
+    }
+    updateScoreboard();
+}
+
+function updateScoreboard() {
+    const formattedTimes = times.map(time => {
+        const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+        const secs = String(time % 60).padStart(2, '0');
+        return `${minutes}:${secs}`;
+    });
+    ps1.textContent = formattedTimes[0] || '0';
+    ps2.textContent = formattedTimes[1] || '0';
+    ps3.textContent = formattedTimes[2] || '0';
+}
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+resetButton.addEventListener('click', resetTimer);
