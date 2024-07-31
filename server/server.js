@@ -11,6 +11,14 @@ app.get("/", (req, res) => {
   res.send("server root route");
 });
 
+app.get("/leaderboard", async function (req, res) {
+  const lbresults = await db.query(
+    `SELECT * FROM LEADERBOARD ORDER BY timemin ASC, timesec ASC LIMIT 3`
+  );
+  const lbTopResults = lbresults.rows;
+  res.json(lbTopResults);
+});
+
 app.listen("8080", () => {
   console.log("listening to port 8080");
 });
