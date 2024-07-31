@@ -15,12 +15,12 @@ let toggleSideBar = function () {
 
 scoreBtn.addEventListener("click", toggleSideBar);
 
-async function fetchGames() {
+async function fetchcards() {
   // talk to the server and ask for the array of games
   const result = await fetch(`http://localhost:8080/cards`);
   // how to read the incoming data
   const cards = await result.json();
-  console.log(cards);
+  double(cards);
 }
 fetchGames();
 
@@ -56,6 +56,7 @@ function resetcards() {
   }
 }
 
+
 //add in card flip functions
 
 document.querySelectorAll(".card").forEach((card) => {
@@ -63,6 +64,17 @@ document.querySelectorAll(".card").forEach((card) => {
     card.classList.toggle("flipped");
   });
 });
+
+function displaycards() {
+  shuffle(cardstotal);
+  for (let i = 0; i < cardstotal.length; i++) {
+    x = document.getElementById("card" + i);
+    x.src = cardstotal.cardImage[i];
+    y = document.getElementById("cardname" + i);
+    y.innerText = cardstotal.cardName[i];
+  }
+}
+displaycards();
 
 // timer functions
 let timer;
@@ -180,5 +192,5 @@ async function leaderboardscores() {
     lbp.appendChild(lbrow);
   }
 }
-
 leaderboardscores();
+
