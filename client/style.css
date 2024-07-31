@@ -166,3 +166,28 @@ h1 {
   cursor: pointer;
   background-color: #5bff22;
 }
+
+.flexboxcardoverlay {
+  position: absolute;
+  display: none;
+  margin: auto;
+  border: 1px solid rgba(20, 19, 19, 0.902);
+  border-radius: 10px;
+  width: 97%;
+  height: 400px;
+  top: 19.2%;
+  left: 8px;
+  right: 8px;
+  background-color: rgb(11, 10, 10);
+  z-index: 2;
+  cursor: pointer;
+}
+.gobutton {
+  background-color: #339f3c;
+  margin-top: 20%;
+  margin-left: 50%;
+  height: 4rem;
+  width: 3rem;
+  font-size: 1.1em;
+  border-radius: 10px;
+}
