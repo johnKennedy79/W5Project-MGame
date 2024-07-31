@@ -45,8 +45,8 @@ let cardstotal = [];
 
 function double(array) {
   for (let i = 0; i < array.length; i++) {
-    cardstotal.push(X[i]);
-    cardstotal.push(X[i]);
+    cardstotal.push(array[i]);
+    cardstotal.push(array[i]);
   }
 }
 
@@ -585,6 +585,7 @@ card11.addEventListener("click", function () {
 function wincheck() {
   if (score === 6) {
     console.log("win");
+    promptForName();
     recordTime();
   } else if (score !== 6) {
     let remaining = 6 - score;
