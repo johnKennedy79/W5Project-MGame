@@ -30,9 +30,9 @@ app.get("/leaderboard", async function (req, res) {
 // post new scores to leaderboard database
 app.post("/leaderboard", (req, res) => {
   console.log(req.body);
-  res.json("time saved");
+  res.json("scores added");
   db.query(
-    `INSERT INTO leaderboard (userName, timeMin, timeSec) VALUES ($1, $2, $3)`,
+    `INSERT INTO leaderboard (userName, timeMin, timeSec) VALUES ($1,$2,$3)`,
     [req.body.userName, req.body.timeMin, req.body.timeSec]
   );
 });

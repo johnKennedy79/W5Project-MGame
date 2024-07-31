@@ -20,9 +20,19 @@ async function fetchcards() {
   const result = await fetch(`http://localhost:8080/cards`);
   // how to read the incoming data
   const cards = await result.json();
+  console.log(cards);
   double(cards);
 }
-fetchGames();
+fetchcards();
+
+let cardstotal = [];
+
+function double(array) {
+  for (let i = 0; i < array.length; i++) {
+    cardstotal.push(array[i]);
+    cardstotal.push(array[i]);
+  }
+}
 
 function shuffle(array) {
   let currentIndex = array.length;
@@ -40,22 +50,13 @@ function shuffle(array) {
     ];
   }
 }
-
-let cardstotal = [];
-
-function double(array) {
-  for (let i = 0; i < array.length; i++) {
-    cardstotal.push(X[i]);
-    cardstotal.push(X[i]);
-  }
-}
+console.log(cardstotal);
 
 function resetcards() {
   while (cardstotal.length > 0) {
     cardstotal.pop();
   }
 }
-
 
 //add in card flip functions
 
@@ -135,6 +136,7 @@ function promptForName() {
 }
 
 function recordTime(name) {
+  const userScore = { name: name, time: seconds };
   bestScores.push({ name: name, time: seconds });
   bestScores.sort((a, b) => a.time - b.time);
   if (bestScores.length > 3) {
@@ -142,6 +144,7 @@ function recordTime(name) {
   }
   localStorage.setItem("bestScores", JSON.stringify(bestScores));
   updateScoreboard();
+  updateLeaderBoard(userScore);
 }
 
 function updateScoreboard() {
@@ -164,10 +167,20 @@ startButton.addEventListener("click", startTimer);
 stopButton.addEventListener("click", stopTimer);
 resetButton.addEventListener("click", resetTimer);
 
-// async function (){
-//     const res = await fetch ("http://localhost:8080/leaderboard")
-// }
-
+async function updateLeaderBoard(entry) {
+  const minutes = String(Math.floor(entry.time / 60)).padStart(2, "0");
+  const secs = String(entry.time % 60).padStart(2, "0");
+  const scoreToSend = { userName: entry.name, timeMin: minutes, timeSec: secs };
+  console.log(scoreToSend);
+  const res = await fetch("http://localhost:8080/leaderboard", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(scoreToSend),
+  });
+  setTimeout(function () {
+    location.reload();
+  }, 2000);
+}
 //leader board
 async function leaderboardscores() {
   const lbresults = await fetch("http://localhost:8080/leaderboard");
@@ -193,4 +206,3 @@ async function leaderboardscores() {
   }
 }
 leaderboardscores();
-

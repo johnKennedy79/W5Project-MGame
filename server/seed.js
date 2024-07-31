@@ -26,7 +26,7 @@ db.query(`CREATE TABLE IF NOT EXISTS cards (
         id SERIAL PRIMARY KEY,
         userName VARCHAR(3),
         timeMin INT,
-        timeSec INT
+        timeSec INT NOT NULL
       );
       
       INSERT INTO leaderboard (userName, timeMin, timeSec) VALUES
