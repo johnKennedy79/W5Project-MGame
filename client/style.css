@@ -79,6 +79,7 @@ h1 {
   width: 60px;
   height: 90px;
   perspective: 1000px;
+  text-align: center;
 }
 
 .card-inner {
@@ -114,7 +115,6 @@ h1 {
   color: white;
   transform: rotateY(180deg);
 }
-
 
 .timerDisplay {
   height: 3rem;
