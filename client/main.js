@@ -219,6 +219,10 @@ card0.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[0]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
+
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -245,6 +249,9 @@ card1.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[1]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -271,6 +278,9 @@ card2.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[2]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -297,6 +307,9 @@ card3.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[3]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -323,6 +336,9 @@ card4.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[4]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -349,6 +365,9 @@ card5.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[5]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -375,6 +394,9 @@ card6.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[6]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -401,6 +423,9 @@ card7.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[7]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -427,6 +452,9 @@ card8.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[8]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -453,6 +481,9 @@ card9.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[9]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -479,6 +510,9 @@ card10.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[10]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -505,6 +539,9 @@ card11.addEventListener("click", function () {
       cardcheck = null;
     } else if (cardcheck === cardstotal[11]) {
       score++;
+      wincheck();
+      cardpick1.classList.toggle("flipped");
+      cardpick2.classList.toggle("flipped");
       cardpick1 = null;
       cardpick2 = null;
       cardcheck = null;
@@ -516,3 +553,13 @@ card11.addEventListener("click", function () {
     }
   }
 });
+
+function wincheck() {
+  if (score === 6) {
+    console.log("win");
+    recordTime();
+  } else if (score !== 6) {
+    let remaining = 6 - score;
+    console.log("you need " + remaining + " more matches to win");
+  }
+}
