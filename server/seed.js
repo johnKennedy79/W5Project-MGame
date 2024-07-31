@@ -1,4 +1,11 @@
-CREATE TABLE IF NOT EXISTS cards (
+import pg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const db = new pg.Pool({ connectionString: process.env.DBCONECTIONCARDS });
+
+db.query(`CREATE TABLE IF NOT EXISTS cards (
     id SERIAL PRIMARY KEY,
     catagory VARCHAR(20),
     cardName VARCHAR(20),
@@ -26,4 +33,4 @@ CREATE TABLE IF NOT EXISTS cards (
       ('JMS', '0', '30'),
       ('KS', '1', '00'),
       ('JW', '1', '05'),
-      ('JMK', '2', '35')
+      ('JMK', '2', '35')`);
