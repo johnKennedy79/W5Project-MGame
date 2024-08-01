@@ -1,3 +1,5 @@
+const audio = document.querySelector("audio");
+
 let toggleSideBarStatus = false;
 const scoreBtn = document.getElementById("scoreBtn");
 
@@ -74,7 +76,8 @@ function displaycards() {
     y.innerText = cardstotal[i].cardname;
   }
 }
-console.log(cardstotal);
+// console.log(cardstotal);
+
 let card0 = document.getElementById("flip-card");
 let card1 = document.getElementById("flip-card1");
 let card2 = document.getElementById("flip-card2");
@@ -109,7 +112,8 @@ const allcards = [
 ];
 for (let i = 0; i < allcards.length; i++) {
   allcards[i].addEventListener("click", function () {
-    console.log(cardstotal[i].cardname);
+    audio.play();
+    // console.log(cardstotal[i].cardname);
     if (cardpick1 === null) {
       cardpick1 = cardstotal[i].cardname;
       cardpick1index = i;
@@ -117,11 +121,11 @@ for (let i = 0; i < allcards.length; i++) {
       cardpick2 = cardstotal[i].cardname;
       cardpick2index = i;
       if (cardpick1 === cardpick2) {
-        console.log("Match");
+        // console.log("Match");
         score++;
         wincheck();
       } else {
-        console.log("No Match");
+        // console.log("No Match");
         seconds += 5;
         setTimeout(function () {
           allcards[cardpick1index].classList.toggle("flipped");
@@ -172,6 +176,7 @@ goBtn.addEventListener("click", function startTimer() {
     }, 1000);
     isRunning = true;
     flexBoxCardOverlay.style.display = "none";
+    audio.play();
   }
 });
 
