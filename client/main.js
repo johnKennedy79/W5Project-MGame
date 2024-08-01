@@ -67,24 +67,11 @@ document.querySelectorAll(".card").forEach((card) => {
 
 function displaycards() {
   shuffle(cardstotal);
-  console.log("Displaying cards:", cardstotal); // Log to see what you're displaying
   for (let i = 0; i < cardstotal.length; i++) {
     const x = document.getElementById("card" + i);
-    if (x) {
-      // Update to use the correct property name
-      console.log("Setting src for card", i, "to", cardstotal[i].cardimage); // Log setting process
-      x.src = cardstotal[i].cardimage; // Access the correct property
-    } else {
-      console.error("Element with id card" + i + " not found");
-    }
-
+    x.src = cardstotal[i].cardimage;
     const y = document.getElementById("cardname" + i);
-    if (y) {
-      // Update to use the correct property name
-      y.innerText = cardstotal[i].cardname; // Access the correct property
-    } else {
-      console.error("Element with id cardname" + i + " not found");
-    }
+    y.innerText = cardstotal[i].cardname;
   }
 }
 
