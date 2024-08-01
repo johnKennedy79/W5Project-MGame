@@ -20,9 +20,22 @@ async function fetchcards() {
   const result = await fetch(`http://localhost:8080/cards`);
   // how to read the incoming data
   const cards = await result.json();
+  console.log(cards);
   double(cards);
 }
 fetchcards();
+
+
+let cardstotal = [];
+
+function double(array) {
+  for (let i = 0; i < array.length; i++) {
+    cardstotal.push(array[i]);
+    cardstotal.push(array[i]);
+  }
+}
+
+
 
 function shuffle(array) {
   let currentIndex = array.length;
@@ -41,14 +54,8 @@ function shuffle(array) {
   }
 }
 
-let cardstotal = [];
+console.log(cardstotal);
 
-function double(array) {
-  for (let i = 0; i < array.length; i++) {
-    cardstotal.push(array[i]);
-    cardstotal.push(array[i]);
-  }
-}
 
 function resetcards() {
   while (cardstotal.length > 0) {
@@ -74,134 +81,6 @@ function displaycards() {
   }
 }
 displaycards();
-
-// timer functions
-let timer;
-let seconds = 0;
-let isRunning = false;
-let bestScores = JSON.parse(localStorage.getItem("bestScores")) || [];
-
-const minutesDisplay = document.getElementById("counterDisplayMin");
-const secondsDisplay = document.getElementById("counterDisplaySec");
-const startButton = document.getElementById("startBtn");
-const stopButton = document.getElementById("stopBtn");
-const resetButton = document.getElementById("restartBtn");
-const ps1 = document.getElementById("ps1");
-const ps2 = document.getElementById("ps2");
-const ps3 = document.getElementById("ps3");
-const na1 = document.getElementById("na1");
-const na2 = document.getElementById("na2");
-const na3 = document.getElementById("na3");
-
-function updateTimerDisplay() {
-  const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const secs = String(seconds % 60).padStart(2, "0");
-  minutesDisplay.textContent = minutes;
-  secondsDisplay.textContent = secs;
-}
-
-function startTimer() {
-  if (!isRunning) {
-    timer = setInterval(() => {
-      seconds++;
-      updateTimerDisplay();
-    }, 1000);
-    isRunning = true;
-  }
-}
-
-function stopTimer() {
-  if (isRunning) {
-    clearInterval(timer);
-    isRunning = false;
-    promptForName();
-    // recordTime();
-  }
-}
-
-function resetTimer() {
-  stopTimer();
-  seconds = 0;
-  updateTimerDisplay();
-}
-
-function promptForName() {
-  let name = prompt("Enter your initials (max 3 letters):", "");
-  if (name) {
-    name = name.substring(0, 3).toUpperCase();
-    recordTime(name);
-  }
-}
-
-displaycards();
-
-function recordTime() {
-  times.push(seconds);
-  times.sort((a, b) => a - b);
-  if (times.length > 3) {
-    times.pop();
-
-
-function recordTime(name) {
-  bestScores.push({ name: name, time: seconds });
-  bestScores.sort((a, b) => a.time - b.time);
-  if (bestScores.length > 3) {
-    bestScores.pop();
-
-  }
-  localStorage.setItem("bestScores", JSON.stringify(bestScores));
-  updateScoreboard();
-}
-
-function updateScoreboard() {
-  const entries = bestScores.map((entry) => {
-    const minutes = String(Math.floor(entry.time / 60)).padStart(2, "0");
-    const secs = String(entry.time % 60).padStart(2, "0");
-    return { name: entry.name, time: `${minutes}:${secs}` };
-  });
-  [na1, na2, na3].forEach((element, index) => {
-    element.textContent = entries[index] ? entries[index].name : "---";
-  });
-  [ps1, ps2, ps3].forEach((element, index) => {
-    element.textContent = entries[index] ? entries[index].time : "0";
-  });
-}
-
-document.addEventListener("DOMContentLoaded", updateScoreboard);
-
-startButton.addEventListener("click", startTimer);
-stopButton.addEventListener("click", stopTimer);
-resetButton.addEventListener("click", resetTimer);
-
-// async function (){
-//     const res = await fetch ("http://localhost:8080/leaderboard")
-// }
-
-//leader board
-async function leaderboardscores() {
-  const lbresults = await fetch("http://localhost:8080/leaderboard");
-  const lbdata = await lbresults.json();
-  console.log(lbdata);
-  const lbp = document.getElementById("lbp");
-  lbp.innerHTML = "";
-  for (let i = 0; i < lbdata.length; i++) {
-    const lbrow = document.createElement("tr");
-    const lbu = document.createElement("td");
-    lbu.textContent = lbdata[i].username;
-    lbrow.appendChild(lbu);
-
-    const lbm = document.createElement("td");
-    lbm.textContent = lbdata[i].timemin + " : ";
-    lbrow.appendChild(lbm);
-
-    const lbs = document.createElement("td");
-    lbs.textContent = lbdata[i].timesec;
-    lbrow.appendChild(lbs);
-
-    lbp.appendChild(lbrow);
-  }
-}
-leaderboardscores();
 
 let card0 = document.getElementById("flip-card");
 
@@ -592,3 +471,143 @@ function wincheck() {
     console.log("you need " + remaining + " more matches to win");
   }
 }
+
+
+// timer functions
+let timer;
+let seconds = 0;
+let isRunning = false;
+let bestScores = JSON.parse(localStorage.getItem("bestScores")) || [];
+
+const minutesDisplay = document.getElementById("counterDisplayMin");
+const secondsDisplay = document.getElementById("counterDisplaySec");
+const startButton = document.getElementById("startBtn");
+const stopButton = document.getElementById("stopBtn");
+const resetButton = document.getElementById("restartBtn");
+const ps1 = document.getElementById("ps1");
+const ps2 = document.getElementById("ps2");
+const ps3 = document.getElementById("ps3");
+const na1 = document.getElementById("na1");
+const na2 = document.getElementById("na2");
+const na3 = document.getElementById("na3");
+
+function updateTimerDisplay() {
+  const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const secs = String(seconds % 60).padStart(2, "0");
+  minutesDisplay.textContent = minutes;
+  secondsDisplay.textContent = secs;
+}
+
+function startTimer() {
+  if (!isRunning) {
+    timer = setInterval(() => {
+      seconds++;
+      updateTimerDisplay();
+    }, 1000);
+    isRunning = true;
+  }
+}
+
+function stopTimer() {
+  if (isRunning) {
+    clearInterval(timer);
+    isRunning = false;
+    promptForName();
+    // recordTime();
+  }
+}
+
+function resetTimer() {
+  stopTimer();
+  seconds = 0;
+  updateTimerDisplay();
+}
+
+function promptForName() {
+  let name = prompt("Enter your initials (max 3 letters):", "");
+  if (name) {
+    name = name.substring(0, 3).toUpperCase();
+    recordTime(name);
+  }
+}
+
+function recordTime() {
+  times.push(seconds);
+  times.sort((a, b) => a - b);
+  if (times.length > 3) {
+    times.pop();
+
+
+function recordTime(name) {
+  const userScore = { name: name, time: seconds };
+  bestScores.push({ name: name, time: seconds });
+  bestScores.sort((a, b) => a.time - b.time);
+  if (bestScores.length > 3) {
+    bestScores.pop();
+
+  }
+  localStorage.setItem("bestScores", JSON.stringify(bestScores));
+  updateScoreboard();
+  updateLeaderBoard(userScore);
+}
+
+function updateScoreboard() {
+  const entries = bestScores.map((entry) => {
+    const minutes = String(Math.floor(entry.time / 60)).padStart(2, "0");
+    const secs = String(entry.time % 60).padStart(2, "0");
+    return { name: entry.name, time: `${minutes}:${secs}` };
+  });
+  [na1, na2, na3].forEach((element, index) => {
+    element.textContent = entries[index] ? entries[index].name : "---";
+  });
+  [ps1, ps2, ps3].forEach((element, index) => {
+    element.textContent = entries[index] ? entries[index].time : "0";
+  });
+}
+
+document.addEventListener("DOMContentLoaded", updateScoreboard);
+
+startButton.addEventListener("click", startTimer);
+stopButton.addEventListener("click", stopTimer);
+resetButton.addEventListener("click", resetTimer);
+
+async function updateLeaderBoard(entry) {
+  const minutes = String(Math.floor(entry.time / 60)).padStart(2, "0");
+  const secs = String(entry.time % 60).padStart(2, "0");
+  const scoreToSend = { userName: entry.name, timeMin: minutes, timeSec: secs };
+  console.log(scoreToSend);
+  const res = await fetch("http://localhost:8080/leaderboard", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(scoreToSend),
+  });
+  setTimeout(function () {
+    location.reload();
+  }, 2000);
+}
+//leader board
+async function leaderboardscores() {
+  const lbresults = await fetch("http://localhost:8080/leaderboard");
+  const lbdata = await lbresults.json();
+  console.log(lbdata);
+  const lbp = document.getElementById("lbp");
+  lbp.innerHTML = "";
+  for (let i = 0; i < lbdata.length; i++) {
+    const lbrow = document.createElement("tr");
+    const lbu = document.createElement("td");
+    lbu.textContent = lbdata[i].username;
+    lbrow.appendChild(lbu);
+
+    const lbm = document.createElement("td");
+    lbm.textContent = lbdata[i].timemin + " : ";
+    lbrow.appendChild(lbm);
+
+    const lbs = document.createElement("td");
+    lbs.textContent = lbdata[i].timesec;
+    lbrow.appendChild(lbs);
+
+    lbp.appendChild(lbrow);
+  }
+}
+leaderboardscores();
+
