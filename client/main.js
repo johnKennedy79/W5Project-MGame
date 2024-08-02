@@ -156,7 +156,6 @@ let bestScores = JSON.parse(localStorage.getItem("bestScores")) || [];
 const minutesDisplay = document.getElementById("counterDisplayMin");
 const secondsDisplay = document.getElementById("counterDisplaySec");
 const goBtn = document.getElementById("goBtn");
-const stopButton = document.getElementById("stopBtn");
 const resetButton = document.getElementById("restartBtn");
 const ps1 = document.getElementById("ps1");
 const ps2 = document.getElementById("ps2");
