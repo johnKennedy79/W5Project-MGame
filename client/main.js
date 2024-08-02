@@ -19,7 +19,7 @@ scoreBtn.addEventListener("click", toggleSideBar);
 
 async function fetchcards() {
   // talk to the server and ask for the array of games
-  const result = await fetch(`http://localhost:8080/cards`);
+  const result = await fetch(`https://w5project-mgame.onrender.com/cards`);
   // how to read the incoming data
   const cards = await result.json();
   double(cards);
@@ -248,7 +248,7 @@ async function updateLeaderBoard(entry) {
   const secs = String(entry.time % 60).padStart(2, "0");
   const scoreToSend = { userName: entry.name, timeMin: minutes, timeSec: secs };
   console.log(scoreToSend);
-  const res = await fetch("http://localhost:8080/leaderboard", {
+  const res = await fetch("https://w5project-mgame.onrender.com/leaderboard", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(scoreToSend),
@@ -259,7 +259,9 @@ async function updateLeaderBoard(entry) {
 }
 //pulls leader board top 3 scores from database and displayes in leaderboard on page
 async function leaderboardscores() {
-  const lbresults = await fetch("http://localhost:8080/leaderboard");
+  const lbresults = await fetch(
+    "https://w5project-mgame.onrender.com/leaderboard"
+  );
   const lbdata = await lbresults.json();
   const lbp = document.getElementById("lbp");
   lbp.innerHTML = "";
